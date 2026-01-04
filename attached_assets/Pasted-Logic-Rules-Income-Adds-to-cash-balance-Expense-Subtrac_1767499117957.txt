@@ -1,0 +1,136 @@
+Logic Rules
+	•	Income → Adds to cash balance
+	•	Expense → Subtracts from cash balance
+	•	Debt Payment → Subtracts from remaining debt AND from cash balance
+
+The user only enters the amount and selects the type — all calculations are automatic.
+
+⸻
+
+3. Financial Dimensions
+
+3.1 Income
+	•	Supports:
+	•	Daily
+	•	Weekly
+	•	Monthly
+	•	Filterable by date range
+	•	No fixed salary assumption (flexible income)
+
+⸻
+
+3.2 Expenses
+	•	Categorized (Rent, Food, Transport, Subscriptions, etc.)
+	•	Includes “Other” for custom categories
+	•	Automatically aggregated by:
+	•	Day
+	•	Week
+	•	Month
+
+⸻
+
+3.3 Debts
+
+Debt Structure
+	•	Separate debt definition table:
+	•	Debt Name
+	•	Initial Total Amount
+
+Debt Logic
+	•	Each Debt Payment reduces:
+	•	Remaining debt balance
+	•	Available cash
+	•	Dashboard must show:
+	•	Remaining debt
+	•	Amount paid
+	•	Progress percentage
+
+No manual tracking of debt balances by the user.
+
+⸻
+
+3.4 Investments (Future-Ready)
+	•	Investment section must exist but can be disabled initially
+	•	Should support:
+	•	Asset name
+	•	Invested amount
+	•	Current value
+	•	ROI calculation
+	•	No dependency on real-time market data (manual input is acceptable)
+
+⸻
+
+4. Dashboard Design (Power BI)
+
+4.1 Mobile-First Design
+
+The dashboard must be:
+	•	Optimized for smartphone screens
+	•	Vertical scrolling
+	•	Large KPI cards
+	•	Minimal charts
+	•	Clear numbers
+	•	No clutter
+
+Mobile layout is mandatory, not optional.
+
+⸻
+
+4.2 Required KPIs
+	•	Total Income
+	•	Total Expenses
+	•	Current Cash Balance
+	•	Remaining Debt
+	•	Net Position (optional)
+
+⸻
+
+4.3 Visualizations
+	•	Income vs Expenses (line or bar)
+	•	Expense distribution by category
+	•	Debt remaining by debt type
+	•	Time-based filters (day / week / month)
+
+⸻
+
+4.4 Filters & Controls
+	•	Date granularity switch:
+	•	Daily
+	•	Weekly
+	•	Monthly
+	•	Category filter
+	•	Debt filter
+
+⸻
+
+5. User Experience Principles
+	•	Extremely simple
+	•	No financial/accounting jargon
+	•	No more than one data entry location
+	•	No broken logic when data volume increases
+	•	Designed for daily usage on mobile
+
+⸻
+
+6. Technical Expectations
+	•	Clean data model
+	•	Automatic aggregations
+	•	No circular calculations
+	•	Easy to extend later
+	•	Power BI + Excel / Sheets compatible
+
+⸻
+
+7. Success Criteria
+
+The solution is considered successful if:
+	•	The user can log a transaction in under 30 seconds
+	•	The dashboard updates instantly
+	•	The user never performs manual calculations
+	•	The system remains usable months or years later
+
+⸻
+
+8. Summary (One-Line)
+
+A mobile-first personal finance dashboard where the user only enters amounts, and Power BI automatically tracks income, expenses, debts, and future investments in PLN, with daily, weekly, and monthly views, without complexity.
