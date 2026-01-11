@@ -125,6 +125,10 @@ export const api = {
   },
 };
 
+export type CreateDebtRequest = z.infer<typeof api.debts.create.input>;
+export type CreateInvestmentRequest = z.infer<typeof api.investments.create.input>;
+export type UpdateInvestmentRequest = z.infer<typeof api.investments.update.input>;
+
 export function buildUrl(path: string, params?: Record<string, string | number>): string {
   let url = path;
   if (params) {
