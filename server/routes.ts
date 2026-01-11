@@ -31,6 +31,7 @@ export async function registerRoutes(
     try {
       const body = {
         ...req.body,
+        amount: String(req.body.amount),
         date: req.body.date ? new Date(req.body.date) : new Date(),
       };
       const input = api.transactions.create.input.parse(body);
@@ -60,7 +61,11 @@ export async function registerRoutes(
 
   app.post(api.debts.create.path, async (req, res) => {
     try {
-      const input = api.debts.create.input.parse(req.body);
+      const body = {
+        ...req.body,
+        initialAmount: String(req.body.initialAmount),
+      };
+      const input = api.debts.create.input.parse(body);
       const item = await storage.createDebt(input);
       res.status(201).json(item);
     } catch (err) {
@@ -87,7 +92,12 @@ export async function registerRoutes(
 
   app.post(api.investments.create.path, async (req, res) => {
     try {
-      const input = api.investments.create.input.parse(req.body);
+      const body = {
+        ...req.body,
+        investedAmount: String(req.body.investedAmount),
+        currentValue: String(req.body.currentValue),
+      };
+      const input = api.investments.create.input.parse(body);
       const item = await storage.createInvestment(input);
       res.status(201).json(item);
     } catch (err) {
