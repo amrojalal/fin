@@ -29,7 +29,11 @@ export async function registerRoutes(
 
   app.post(api.transactions.create.path, async (req, res) => {
     try {
-      const input = api.transactions.create.input.parse(req.body);
+      const body = {
+        ...req.body,
+        date: req.body.date ? new Date(req.body.date) : new Date(),
+      };
+      const input = api.transactions.create.input.parse(body);
       const item = await storage.createTransaction(input);
       res.status(201).json(item);
     } catch (err) {

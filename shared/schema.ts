@@ -8,15 +8,15 @@ import { relations } from "drizzle-orm";
 export const debts = pgTable("debts", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  initialAmount: numeric("initial_amount", { precision: 12, scale: 2 }).notNull(),
+  initialAmount: numeric("initial_amount", { precision: 12, scale: 2 }).notNull().$type<string | number>(),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const investments = pgTable("investments", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  investedAmount: numeric("invested_amount", { precision: 12, scale: 2 }).notNull(),
-  currentValue: numeric("current_value", { precision: 12, scale: 2 }).notNull(),
+  investedAmount: numeric("invested_amount", { precision: 12, scale: 2 }).notNull().$type<string | number>(),
+  currentValue: numeric("current_value", { precision: 12, scale: 2 }).notNull().$type<string | number>(),
   lastUpdated: timestamp("last_updated").defaultNow(),
 });
 
@@ -25,7 +25,7 @@ export const transactions = pgTable("transactions", {
   date: timestamp("date").notNull().defaultNow(),
   type: text("type", { enum: ["income", "expense", "debt_payment"] }).notNull(),
   category: text("category").notNull(),
-  amount: numeric("amount", { precision: 12, scale: 2 }).notNull(),
+  amount: numeric("amount", { precision: 12, scale: 2 }).notNull().$type<string | number>(),
   notes: text("notes"),
   debtId: integer("debt_id").references(() => debts.id), // Only for debt_payment
   createdAt: timestamp("created_at").defaultNow(),
